@@ -12,6 +12,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:80px;"><strong>STT</strong></th>
+                                                <th><strong>User</strong></th>
                                                 <th><strong>Tên Phần Mềm</strong></th>
                                                 <th><strong>Giá</strong></th>
                                                 <th><strong>Ngày mua</strong></th>
@@ -24,6 +25,7 @@
                                             ?>
                                             <tr>
                                                 <td><strong><?php echo $id_bill?></strong></td>
+                                                <td><?php echo $ten_user?></td>
                                                 <td><?php echo $ten_phanmem?></td>
                                                 <td><?php echo $price?></td>
                                                 <td><?php echo $date?></td>
