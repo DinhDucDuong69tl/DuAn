@@ -622,12 +622,12 @@
 							<li><a href="transaction-details.html">Transaction Details</a></li>	
 						</ul> -->
 					</li>	
-                    <li><a class="" href="#" >
+                    <li><a class="" href="index.php?act=lisdm" >
 							<i class="flaticon-045-heart"></i>
 							<span class="nav-text">Danh mục</span>
 						</a>
                     </li>	
-                    <li><a class="" href="#" >
+                    <li><a class="" href="index.php?act=lispm" >
 							<i class="flaticon-041-graph"></i>
 							<span class="nav-text">Phần mềm</span>
 						</a>
