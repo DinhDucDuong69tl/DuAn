@@ -632,12 +632,12 @@
 							<span class="nav-text">Phần mềm</span>
 						</a>
                     </li>	
-                    <li><a class="" href="#" >
+                    <li><a class="" href="index.php?act=listbill" >
 							<i class="flaticon-043-menu"></i>
 							<span class="nav-text">Bill</span>
 						</a>
                     </li>	
-					<li><a class="" href="#" >
+					<li><a class="" href="index.php?act=dsuser" >
 							<i class="flaticon-022-copy"></i>
 							<span class="nav-text">Tài Khoản</span>
 						</a>

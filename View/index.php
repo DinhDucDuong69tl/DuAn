@@ -23,6 +23,7 @@
                 }                       
                 break;
             case 'bill':
+                    // $ngaydathang =date('h:i:sa  d/m/Y');
                     $listbillUser = load_bill_user(1) ;   
                     require "bill.php";                    
                 break;

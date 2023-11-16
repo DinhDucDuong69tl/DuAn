@@ -1,6 +1,6 @@
 <?php
     function insert_phanmem($ten_phanmem,$img,$price,$link,$des,$id_danhmuc){
-        $sql = "INSERT INTO `phanmem` (`id_phanmem`, `ten_phanmem`, `img`, `price`, `link`, `des`, `id_danhmuc`) VALUES ('{$ten_phanmem}', '{$img}', '{$price} ', '{$link}', '{$des}', '{$id_danhmuc}')";
+        $sql = "INSERT INTO `phanmem` (`ten_phanmem`, `img`, `price`, `link`, `des`, `id_danhmuc`) VALUES ('{$ten_phanmem}', '{$img}', '{$price} ', '{$link}', '{$des}', '{$id_danhmuc}')";
         pdo_execute($sql);
     }
 
@@ -27,13 +27,13 @@
         pdo_execute($sql);
     }
 
-    // function update_phanmem($id_car,$name,$img){
-    //     if($img!=""){
-    //         $sql = "UPDATE `phanmem` SET `name` = '{$name}', `img` = '{$img}' WHERE `car`.`id_car` = {$id_car}";
-    //     }else{
-    //         $sql = "UPDATE `phanmem` SET `name` = '{$name}' WHERE `car`.`id_car` = {$id_car}";
-    //     }        
-    //     pdo_execute($sql);
-    // }
+    function update_phanmem($id_phanmem,$ten_phanmem,$img,$price,$link,$des){
+        if($img!=""){
+            $sql = "UPDATE `phanmem` SET `ten_phanmem` = '{$ten_phanmem}', `img` = '{$img}', `price` = '{$price}', `link` = '{$link}', `des` = '{$des}' WHERE `phanmem`.`id_phanmem` = {$id_phanmem}";
+        }else{
+            $sql = "UPDATE `phanmem` SET `ten_phanmem` = '{$ten_phanmem}', `price` = '{$price}', `link` = '{$link}', `des` = '{$des}' WHERE `phanmem`.`id_phanmem` = {$id_phanmem}";
+        }        
+        pdo_execute($sql);
+    }
 
 ?>

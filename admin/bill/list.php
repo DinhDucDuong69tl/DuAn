@@ -19,11 +19,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach($listbillUser as $bill){
+                                            <?php foreach($listbill as $bill){
                                                 extract($bill);
-                                                // echo "<pre>";
-                                                // print_r($bill);
-                                                // echo "</pre>";
                                             ?>
                                             <tr>
                                                 <td><strong><?php echo $id_bill?></strong></td>

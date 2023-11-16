@@ -17,6 +17,7 @@
                                                 <th><strong>Img</strong></th>
                                                 <th><strong>Price</strong></th>
                                                 <th><strong>Link</strong></th>
+                                                <th><strong>Des</strong></th>
                                                 <th><strong>Danh mục</strong></th>
                                                 <th></th>
                                             </tr>
@@ -32,9 +33,10 @@
                                             <tr>
                                                 <td><strong><?php echo $id_phanmem?></strong></td>
                                                 <td><?php echo $ten_phanmem?></td>
-                                                <td><?php echo $img?></td>
+                                                <td><img src="<?php echo $img?>" alt="" class="me-3 rounded" width="150" height="150"></td>
                                                 <td><?php echo $price?></td>
                                                 <td><?php echo $link?></td>
+                                                <td><?php echo $des?></td>
                                                 <td><?php echo $name_danhmuc = load_name_danhmuc($id_danhmuc)?></td>
                                                 <td>
 													<div class="d-flex">

@@ -84,49 +84,51 @@
                 $listphanmem=loadall_phanmem();
                 include "phanmem/list.php"; 
                 break;
-            // case 'xoasp':
-            //     if(isset($_GET['id'])&&($_GET['id']>0)){
-            //         delete_sanpham($_GET['id']);
-            //     }
-            //     $sql = "select * from sanpham";
-            //     $listsanpham=loadall_sanpham('',0);
-            //     include "sanpham/list.php"; 
-            //     break;
-            // case 'suasp':
-            //     if(isset($_GET['id_phanmem'])&&($_GET['id_phanmem']>0)){
-            //         $sp=loadone_sanpham($_GET['id_phanmem']);
-            //     }      
-            //     $listdanhmuc=loadall_danhmuc();     
-            //     include "sanpham/update.php"; 
-            //     break;
-            // case 'updatesp':
-            //     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-            //         $iddm=$_POST['iddm'];
-            //         $id = $_POST['id'];
-            //         $tensp = $_POST['tensp'];
-            //         $giasp = $_POST['giasp'];
-            //         $mota = $_POST['mota'];
+            case 'xoapm':
+                if(isset($_GET['id_phanmem'])&&($_GET['id_phanmem']>0)){
+                    delete_phanmem($_GET['id_phanmem']);
+                }
+                $sql = "select * from `phanmem`";
+                $listphanmem=loadall_phanmem();
+                include "phanmem/list.php"; 
+                break;
+            case 'suapm':
+                if(isset($_GET['id_phanmem'])&&($_GET['id_phanmem']>0)){
+                    $pm=loadone_phanmem($_GET['id_phanmem']);
+                }      
+                $listdanhmuc=loadall_danhmuc();     
+                include "phanmem/update.php"; 
+                break;
+            case 'updatepm':
+                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                    $id_phanmem=$_POST['id_phanmem'];
+                    $ten_phanmem = $_POST['ten_phanmem'];
+                    $price = $_POST['price'];
+                    $link = $_POST['link'];
+                    $des = $_POST['des'];
                     
-            //         $dir = "../upload/";
-            //         $filename = basename($_FILES['hinh']['name']);
-            //         $fileimg = $dir.$filename;
-            //         if(move_uploaded_file($_FILES['hinh']['tmp_name'],$fileimg)){
-            //             $_POST['hinh'] = $fileimg;
-            //             $hinh = $_POST['hinh'];                       
-            //         }
+                    $dir = "../upload/";
+                    $filename = basename($_FILES['img']['name']);
+                    $fileimg = $dir.$filename;
+                    if(move_uploaded_file($_FILES['img']['tmp_name'],$fileimg)){
+                        $_POST['img'] = $fileimg;
+                        $img = $_POST['img'];
+                    }else{
+                        echo "up load thất bại";
+                    }
                     
-            //         update_sanpham($id, $tensp, $giasp,$hinh, $mota,$iddm);
-            //         $thongbao = "Cập nhật thành công";
-            //     }
-            //     $listsanpham=loadall_sanpham('',0);
-            //     include "sanpham/list.php"; 
-            //     break;
+                    update_phanmem($id_phanmem,$ten_phanmem,$img,$price,$link,$des);
+                    $thongbao = "Cập nhật thành công";
+                }
+                $listphanmem=loadall_phanmem();
+                include "phanmem/list.php"; 
+                break;
 
-            // //khach hang
-            // case 'dskh':     
-            //     $listtaikhoan=loadall_taikhoan();     
-            //     include "taikhoan/list.php"; 
-            //     break;
+            //user
+            case 'dsuser':     
+                $listtaikhoan=loadall_taikhoan();     
+                include "taikhoan/list.php"; 
+                break;
 
             // //binhluan
             // case 'dsbl':                   
@@ -143,15 +145,10 @@
             //     break;
 
             // //bill
-            // case 'listbill':
-            //     if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
-            //         $kyw = $_POST['kyw'];
-            //     }else{
-            //         $kyw ="";
-            //     }
-            //     $listbill=loadall_bill($kyw,0);
-            //     include "bill/listbill.php"; 
-            //     break;
+            case 'listbill':
+                $listbill=loadall_bill_allUser();
+                include "bill/list.php"; 
+                break;
             // case 'xoadh':
             //     if(isset($_GET['id'])&&($_GET['id']>0)){
             //         delete_cart($_GET['id']);
@@ -178,6 +175,7 @@
             //     $listbill=loadall_bill("",0);
             //     include "bill/listbill.php"; 
             //     break;
+
             // //thong ke hang hoa
             // case 'thongke':
             //     if(isset($_POST['kyw'])&&($_POST['kyw']!="")){

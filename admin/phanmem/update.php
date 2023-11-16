@@ -1,7 +1,9 @@
 <?php
-    if(is_array($sp)){
-        extract($sp);
+    if(is_array($pm)){
+        extract($pm);
+        
     }
+
     $hinhpath="../upload/".$img;
     if(is_file($hinhpath)){
         $img = " <img src='".$hinhpath."' heigth='50px'; width='50px' >";
@@ -10,79 +12,91 @@
     }
     
 ?>
+<div class="content-body">
+    <div class="container-fluid">	
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Update Phần mềm</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form action="index.php?act=updatepm" method="post" enctype="multipart/form-data">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Tên phần mềm</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="ten_phanmem" value=" <?php if(isset($ten_phanmem)&&($ten_phanmem!="")) echo $ten_phanmem?>">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Img</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group mb-3">
+                                            <div class="form-file">
+                                                <input type="file" class="form-file-input form-control" name="img">
+                                            </div>                                            
+											<span class="input-group-text">Upload</span>
+                                        </div>
+                                        <img src="<?php if(isset($img)&&($img!="")) echo $img?>" alt="" class="me-3 rounded" width="150" height="150">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Price</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="price" value=" <?php if(isset($price)&&($price!="")) echo $price?>">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Link</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="link" value=" <?php if(isset($link)&&($link!="")) echo $link?>">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Des</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="des" id="" cols="115" rows="10" ><?php if(isset($des)&&($des!="")) echo $des?></textarea>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Danh mục</label>
+                                        <select class="default-select form-control wide" name="id_danhmuc">
+                                            <?php
+                                                foreach($listdanhmuc as $danhmuc){
+                                                    extract($danhmuc);
+                                                    if($pm['id_danhmuc']==$danhmuc['id_danhmuc']){
+                                            ?>
+                                                <option value="<?php echo $id_danhmuc ?>" selected ><?php echo $ten_danhmuc?></option>
+                                            <?php
+                                                    }
+                                                }
+                                            ?>
+                                            
+                                        </select>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="hidden" name="id_phanmem" value="<?php if(isset($id_phanmem)&&($id_phanmem>0)) echo $id_phanmem ?>" class="btn btn-primary">
+                                        <input type="submit" name="capnhat" id="" value="Cập nhật"  class="btn btn-primary" >
+                                        <input type="reset" name="" id="" value="Nhập lại"  class="btn btn-primary" >
+                                        <a href="index.php?act=lispm"><input type="button" value="Danh sách"  class="btn btn-primary"></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <p><?php
+                                    if(isset($thongbao)&&($thongbao!="")){
+                                        echo $thongbao;
+                                    }
 
+                                ?></p>
+                                </div>
+                            </form>
+                        </div>    
 
-<div class="row">
-            <div class="row fratitle">
-                <h3>Cập nhật sản phẩm</h3>
+                    </div>
+                </div>   
             </div>
-            
-            <form action="index.php?act=updatesp" method="post" enctype="multipart/form-data">
-                <div class="row mb10">
-                    <select name="iddm" id="">
-                    <?php
-                        foreach ($listdanhmuc as $danhmuc){
-                            extract($danhmuc);
-                            // echo "<pre>";
-                            // print_r($danhmuc);
-                            // echo "</pre>";
-                            if($danhmuc['id']==$sp['id']){  
-                    ?>
-                            <option value="<?php echo $danhmuc['id']?>" selected><?php echo $danhmuc['name']?></option>
-                    <?php
-                            }else{
-                    ?>
-                            <option value="<?php echo $danhmuc['id']?>" ><?php echo $danhmuc['name']?></option>
-                    <?php
-                            }
-                    }
-                    ?>  
-                    <?php
-                    // echo "<pre>";
-                    // print_r($danhmuc);
-                    // echo "</pre>";
-                    ?>
-                        <input type="submit" name="listok" value="Go">                       
-                    </select>
-                </div>
-                <div class="row mb10">
-                    Tên sản phẩm <br>
-                    <input type="text" name="tensp" id="mb10" value="<?=$sp['name']?>">
-                    <br>
-                    <br>
-                </div>
-                <div class="row mb10">
-                    Giá sản phẩm <br>
-                    <input type="text" name="giasp" id="mb10" value="<?=$price?>">
-                    <br>
-                    <br>
-                </div>
-                <div class="row mb10">
-                    Hình sản phẩm <br>
-                   <input type="file" name="hinh" id="" value="<?=$img?>">
-                    <br>
-                    <?=$img?>
-                    <br>
-                </div>
-                <div class="row mb10">
-                    Mô tả <br>
-                    <textarea name="mota" id="" cols="30" rows="10"><?=$des?></textarea>
-                    <br>
-                    <br>
-                </div>
-
-                <div class="row mb10">
-                    <input type="hidden" name="id" value="<?=$id_sp?>">
-                    <input type="submit" name="capnhat" id="" value="Cập nhật" >
-                    <input type="reset" name="" id="" value="Nhập lại">
-                    <a href="index.php?act=lissp"><input type="button" value="Danh sách"></a>
-
-                </div>
-                <?php
-                    if(isset($thongbao)&&($thongbao!="")){
-                        echo $thongbao;
-                    }
-
-                ?>
-            </form>
         </div>
+    </div>
+</div>
