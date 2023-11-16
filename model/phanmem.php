@@ -1,6 +1,6 @@
 <?php
-    function insert_phanmem($ten_phanmem,$img,$price,$link,$id_danhmuc){
-        $sql = "INSERT INTO `phanmem` (`ten_phanmem`, `img`, `price`, `link`, `id_danhmuc`) VALUES ('{$ten_phanmem}', '{$img}', '{$price}', '{$link}', '{$id_danhmuc}')";
+    function insert_phanmem($ten_phanmem,$img,$price,$link,$des,$id_danhmuc){
+        $sql = "INSERT INTO `phanmem` (`id_phanmem`, `ten_phanmem`, `img`, `price`, `link`, `des`, `id_danhmuc`) VALUES ('{$ten_phanmem}', '{$img}', '{$price} ', '{$link}', '{$des}', '{$id_danhmuc}')";
         pdo_execute($sql);
     }
 
